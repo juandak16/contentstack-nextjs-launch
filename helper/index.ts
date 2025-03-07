@@ -47,7 +47,12 @@ export const getPageRes = async (entryUrl: string): Promise<Page> => {
   const response = (await getEntryByUrl({
     contentTypeUid: "page",
     entryUrl,
-    referenceFieldPath: ["page_components.from_blog.featured_blogs"],
+    referenceFieldPath: [
+      "page_components.from_blog.featured_blogs",
+      "page_components.special_events_list.special_events",
+      "page_components.special_events_list.special_events.blogs",
+      "page_components.special_events_list.special_events.heroes",
+    ],
     jsonRtePath: [
       "page_components.from_blog.featured_blogs.body",
       "page_components.section_with_buckets.buckets.description",
@@ -63,6 +68,17 @@ export const getBlogListRes = async (): Promise<BlogPosts[]> => {
     contentTypeUid: "blog_post",
     referenceFieldPath: ["author", "related_post"],
     jsonRtePath: ["body"],
+  })) as BlogPosts[][];
+  liveEdit &&
+    response[0].forEach((entry) => addEditableTags(entry, "blog_post", true));
+  return response[0];
+};
+
+export const getEventListRes = async (): Promise<BlogPosts[]> => {
+  const response = (await getEntry({
+    contentTypeUid: "special_event",
+    referenceFieldPath: undefined,
+    jsonRtePath: undefined,
   })) as BlogPosts[][];
   liveEdit &&
     response[0].forEach((entry) => addEditableTags(entry, "blog_post", true));

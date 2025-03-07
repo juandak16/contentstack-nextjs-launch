@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import Section from './section';
-import HeroBanner from './hero-banner';
-import BlogBanner from './blog-banner';
-import CardSection from './card-section';
-import TeamSection from './team-section';
-import BlogSection from './blog-section';
-import SectionBucket from './section-bucket';
-import AboutSectionBucket from './about-section-bucket';
-import SectionWithHtmlCode from './section-with-html-code';
+import Section from "./section";
+import HeroBanner from "./hero-banner";
+import BlogBanner from "./blog-banner";
+import CardSection from "./card-section";
+import TeamSection from "./team-section";
+import BlogSection from "./blog-section";
+import SectionBucket from "./section-bucket";
+import AboutSectionBucket from "./about-section-bucket";
+import SectionWithHtmlCode from "./section-with-html-code";
+import SpecialEventsSection from "./special-events";
 import { RenderProps } from "../typescript/component";
 
 export default function RenderComponents(props: RenderProps) {
@@ -79,6 +80,14 @@ export default function RenderComponents(props: RenderProps) {
           return (
             <TeamSection
               ourTeam={component.our_team}
+              key={`component-${key}`}
+            />
+          );
+        }
+        if (component.special_events_list) {
+          return (
+            <SpecialEventsSection
+              {...component.special_events_list}
               key={`component-${key}`}
             />
           );

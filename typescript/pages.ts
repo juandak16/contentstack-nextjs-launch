@@ -22,7 +22,7 @@ type AdditionalParam = {
   url: string;
 }
 
-type Post = {
+export type Post = {
   url: string;
   is_archived: boolean;
   body: string;

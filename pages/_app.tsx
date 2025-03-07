@@ -49,6 +49,7 @@ function MyApp(props: Props) {
         />
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+        <meta http-equiv="Cache-Control" content="no-store" />
         <meta
           name='viewport'
           content='width=device-width,initial-scale=1,minimum-scale=1'
